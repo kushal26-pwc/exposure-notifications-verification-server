@@ -10,3 +10,16 @@ resource "google_monitoring_notification_channel" "email" {
     null_resource.manual-step-to-enable-workspace
   ]
 }
+
+resource "google_monitoring_notification_channel" "email-pwc" {
+  provider     = google-beta
+  project      = var.monitoring-host-project
+  display_name = "Email Notification Channel"
+  type         = "email"
+  labels = {
+    email_address = "kushal.karnani@pwc.com"
+  }
+  depends_on = [
+    null_resource.manual-step-to-enable-workspace
+  ]
+}
